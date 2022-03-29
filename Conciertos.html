@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conciertos</title>
+<script>
+    var opciones_conciertos=[{nombre:"AC/DC", valor:"acdc", precio:100},
+                            {nombre:"Barón Rojo", valor:"baron", precio:80},
+                            {nombre:"Iron Butterfly", valor:"iron", precio:120}]
+
+    function crearSelect(){
+        let sel=document.createElement("select");
+            sel.addEventListener("change",Cambio);
+            document.getElementsByTagName("div")[0].appendChild(sel);
+        let opcion=document.createElement("option");
+
+        for(let i=0;i<opciones_conciertos.length;i++){
+            opcion.innerHTML=opciones_conciertos[i].nombre;
+            opcion.value=opciones_conciertos[i].valor;
+            document.getElementsByTagName("select")[0].appendChild(opcion);
+            opcion=document.createElement("option");
+        }
+    }
+        
+    function Cambio(){
+        let p=document.getElementsByTagName("p")[0];
+        if(p==null){
+            let f=document.createElement("p");
+            let t=0;
+            let n;
+            let val=document.getElementsByTagName("select")[0].value;
+                if(val=="acdc"){
+                    t=opciones_conciertos[0].precio;
+                    n=opciones_conciertos[0].nombre;
+                }
+                if(val=="baron"){
+                    t=opciones_conciertos[1].precio;
+                    n=opciones_conciertos[1].nombre;
+                }
+                if(val=="iron"){
+                    t=opciones_conciertos[2].precio;
+                    n=opciones_conciertos[2].nombre;
+                }
+            f.innerHTML="El concierto "+n+" vale "+t;
+            document.getElementsByTagName("div")[1].appendChild(f);
+        }
+        else{
+            let t=0;
+            let n;
+            let val=document.getElementsByTagName("select")[0].value;
+                if(val=="acdc"){
+                    t=opciones_conciertos[0].precio;
+                    n=opciones_conciertos[0].nombre;
+                }
+                if(val=="baron"){
+                    t=opciones_conciertos[1].precio;
+                    n=opciones_conciertos[1].nombre;
+                }
+                if(val=="iron"){
+                    t=opciones_conciertos[2].precio;
+                    n=opciones_conciertos[2].nombre;
+                }
+            p.innerHTML="El concierto "+n+" vale "+t;   
+        }
+    }
+</script>
+</head>
+<body onload="crearSelect()">
+    <div>
+    </div>
+    <div>
+    </div>
+</body>
+</html>
